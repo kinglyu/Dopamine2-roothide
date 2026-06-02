@@ -397,6 +397,13 @@ int roothide_launchd___posix_spawn_prehook(pid_t *restrict pidp, const char *res
 			//choicy may set these 
 			envbuf_unsetenv(&envc, "_SafeMode");
 			envbuf_unsetenv(&envc, "_MSSafeMode");
+			envbuf_unsetenv(&envc, "DYLD_INSERT_LIBRARIES");
+			envbuf_unsetenv(&envc, "CLASSIC_OVERRIDE");
+			envbuf_unsetenv(&envc, "XPC_SERVICE_NAME");
+			envbuf_unsetenv(&envc, "PATH");
+			envbuf_unsetenv(&envc, "LOGNAME");
+			envbuf_unsetenv(&envc, "USER");
+			envbuf_unsetenv(&envc, "SHELL");
 	
 			/* According to xnu, the new thread in new process will not run in userland until after copyout pid
 			https://github.com/apple-oss-distributions/xnu/blob/8d741a5de7ff4191bf97d57b9f54c2f6d4a15585/bsd/kern/kern_exec.c#L4321
