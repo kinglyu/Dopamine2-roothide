@@ -21,7 +21,7 @@ NSString* getProcessName()
 
 %ctor
 {
-	NSLog(@"roothidehooks coming... %@", safe_getExecutablePath());
+	NSLog(@"xxxx roothidehooks coming... %@", safe_getExecutablePath());
 	NSString *processName = getProcessName();
 	/*if ([processName isEqualToString:@"installd"]) {
 		extern void installdInit(void);
