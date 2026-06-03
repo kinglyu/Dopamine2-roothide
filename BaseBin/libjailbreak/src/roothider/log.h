@@ -5,7 +5,7 @@
 #include <stdbool.h>
 #include <sys/syslimits.h>
 
-#define JBLOG_FULL_SYNC 0
+#define JBLOG_FULL_SYNC 1
 #define JBLOG_FORCE_LOG 1
 
 bool JBLogEnabled();
