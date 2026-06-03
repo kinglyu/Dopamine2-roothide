@@ -6,19 +6,19 @@
 #include "roothider/log.h"
 #include "roothider/xpc_private.h"
 
-// #ifdef ENABLE_LOGS
-// void (*XPCLogDebugFunction)(const char *format, ...);
-// void (*XPCLogErrorFunction)(const char *format, ...);
+#ifdef ENABLE_LOGS
+void (*XPCLogDebugFunction)(const char *format, ...);
+void (*XPCLogErrorFunction)(const char *format, ...);
 
-// #define JBLogDebug(...) do { if(XPCLogDebugFunction)XPCLogDebugFunction(__VA_ARGS__); } while(0)
-// #define JBLogError(...) do { if(XPCLogErrorFunction)XPCLogErrorFunction(__VA_ARGS__); } while(0)
+#define JBLogDebug(...) do { if(XPCLogDebugFunction)XPCLogDebugFunction(__VA_ARGS__); } while(0)
+#define JBLogError(...) do { if(XPCLogErrorFunction)XPCLogErrorFunction(__VA_ARGS__); } while(0)
 
-// void enableXPCLog(void* debugLog, void* errorLog)
-// {
-// 	XPCLogDebugFunction = debugLog;
-// 	XPCLogErrorFunction = errorLog;
-// }
-// #endif
+void enableXPCLog(void* debugLog, void* errorLog)
+{
+	XPCLogDebugFunction = debugLog;
+	XPCLogErrorFunction = errorLog;
+}
+#endif
 
 mach_port_t jbclient_jailbreakd_lookup()
 {
