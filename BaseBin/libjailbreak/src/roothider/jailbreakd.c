@@ -12,19 +12,19 @@
 #include "common.h"
 #include "log.h"
 
-// #ifdef ENABLE_LOGS
-// static void (*JBDLogDebugFunction)(const char *format, ...);
-// static void (*JBDLogErrorFunction)(const char *format, ...);
+#ifdef ENABLE_LOGS
+static void (*JBDLogDebugFunction)(const char *format, ...);
+static void (*JBDLogErrorFunction)(const char *format, ...);
 
-// #define JBLogDebug(...) do { if(JBDLogDebugFunction)JBDLogDebugFunction(__VA_ARGS__); } while(0)
-// #define JBLogError(...) do { if(JBDLogErrorFunction)JBDLogErrorFunction(__VA_ARGS__); } while(0)
+#define JBLogDebug(...) do { if(JBDLogDebugFunction)JBDLogDebugFunction(__VA_ARGS__); } while(0)
+#define JBLogError(...) do { if(JBDLogErrorFunction)JBDLogErrorFunction(__VA_ARGS__); } while(0)
 
-// void enableJBDLog(void* debugLog, void* errorLog)
-// {
-// 	JBDLogDebugFunction = debugLog;
-// 	JBDLogErrorFunction = errorLog;
-// }
-// #endif
+void enableJBDLog(void* debugLog, void* errorLog)
+{
+	JBDLogDebugFunction = debugLog;
+	JBDLogErrorFunction = errorLog;
+}
+#endif
 
 int posix_spawnattr_setspecialport_np(posix_spawnattr_t *attr, mach_port_t new_port, int which);
 int posix_spawnattr_set_registered_ports_np(posix_spawnattr_t * __restrict attr, mach_port_t portarray[], uint32_t count);
