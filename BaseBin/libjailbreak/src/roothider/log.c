@@ -82,11 +82,11 @@ void JBDLogV(const char* path, pid_t pid, uint64_t tid, const char *prefix, cons
 }
 
 bool JBLogEnabled(void) {
-    static bool enabled = false;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        enabled = access("/var/.JBLogEnabled", F_OK) == 0;
-    });
+    static bool enabled = yes;
+    // static dispatch_once_t onceToken;
+    // dispatch_once(&onceToken, ^{
+    //     enabled = access("/var/.JBLogEnabled", F_OK) == 0;
+    // });
     return enabled;
 }
 
