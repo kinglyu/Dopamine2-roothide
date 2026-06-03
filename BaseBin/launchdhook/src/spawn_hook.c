@@ -21,7 +21,7 @@ extern int systemwide_trust_file_by_path(const char *path);
 extern int platform_set_process_debugged(uint64_t pid, bool fullyDebugged);
 extern void systemwide_domain_set_enabled(bool enabled);
 
-#define LOG_PROCESS_LAUNCHES 0
+#define LOG_PROCESS_LAUNCHES 1
 
 extern bool gInEarlyBoot;
 
