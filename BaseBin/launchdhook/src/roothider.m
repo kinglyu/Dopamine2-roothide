@@ -227,7 +227,7 @@ int roothide_launchd___posix_spawn_posthook(pid_t *restrict pidp, const char *re
 	posix_spawnattr_getprocesstype_np(attrp, &proctype);
 
 	bool should_suspend = (proctype != POSIX_SPAWN_PROC_TYPE_DRIVER);
-	bool should_resume = should_suspend && (flags & POSIX_SPAWN_START_SUSPENDED)==0;
+	bool should_resume = should_suspend && (flags & POSIX_SPAWN_START_SUSPENDED)==0 && !string_has_suffix(path, "/TikTok.app/TikTok");
 
 	if (should_suspend) {
 		posix_spawnattr_setflags(attrp, flags | POSIX_SPAWN_START_SUSPENDED);
