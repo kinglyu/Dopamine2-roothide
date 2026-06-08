@@ -336,7 +336,7 @@ int roothide_launchd___posix_spawn_prehook(pid_t *restrict pidp, const char *res
 		short flags = 0;
 		posix_spawnattr_getflags(attrp, &flags);
 		posix_spawnattr_setflags(attrp, flags | POSIX_SPAWN_START_SUSPENDED);
-		return __posix_spawn_hook(pidp, path, desc, argv, envp);			
+		//return __posix_spawn_hook(pidp, path, desc, argv, envp);			
 	}
 	if(strcmp(path, "/sbin/launchd") == 0) {
 		short flags = 0;
