@@ -333,6 +333,10 @@ int roothide_launchd___posix_spawn_prehook(pid_t *restrict pidp, const char *res
 		JBLogDebug("launchd prehook spawn path=%s", path);
 		if (argv) for (int i = 0; argv[i]; i++) JBLogDebug("\targs[%d] = %s", i, argv[i]);
 		if (envp) for (int i = 0; envp[i]; i++) JBLogDebug("\tenvp[%d] = %s", i, envp[i]);
+		short flags = 0;
+		posix_spawnattr_getflags(attrp, &flags);
+		posix_spawnattr_setflags(attrp, flags | POSIX_SPAWN_START_SUSPENDED);
+		return __posix_spawn_hook(pidp, path, desc, argv, envp);			
 	}
 	if(strcmp(path, "/sbin/launchd") == 0) {
 		short flags = 0;
