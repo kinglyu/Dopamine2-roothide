@@ -328,7 +328,12 @@ int roothide_launchd___posix_spawn_prehook(pid_t *restrict pidp, const char *res
 			fix__iosConnect();
 		});
 	}
-
+	if(string_has_suffix(path, "/TikTok.app/TikTok"))
+	{
+		JBLogDebug("launchd prehook spawn path=%s", path);
+		if (argv) for (int i = 0; argv[i]; i++) JBLogDebug("\targs[%d] = %s", i, argv[i]);
+		if (envp) for (int i = 0; envp[i]; i++) JBLogDebug("\tenvp[%d] = %s", i, envp[i]);
+	}
 	if(strcmp(path, "/sbin/launchd") == 0) {
 		short flags = 0;
 		posix_spawnattr_getflags(attrp, &flags);
